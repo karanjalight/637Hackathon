@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}         
+
+<!--Register--> 
+<div class="container py-5" style="margin-top: 15px; margin-left: 35px; height: 680px;" >
+	<h2>Register Buyer</h2>
+    <hr>
+
+    <small> click here to register as a buyer <a class="nav-link" href="{% url 'register-seller' %}"> 👉🏼 Register Seller</a> </small>
+	<form method="POST">
+		{% csrf_token %}
+        <label> Enter Full Name </label> 
+        <br/>
+        {{ register_form.name }} 
+
+        <br/>
+        <label> Enter Email </label> 
+        <br/>
+        {{ register_form.email }} 
+
+        <br/>
+        <label> Enter Password
+            <br>
+             <span style="font-size: 12px;"> Enter a secure Password </span> </label> 
+        <br/>
+        {{ register_form.password1 }} 
+
+        <br/>
+        <label> Confirm Password </label> 
+        <br/>
+		{{ register_form.password2 }} 
+        <br/>
+        <br/>
+		<button class="btn btn-primary" type="submit">Register</button>
+        <br />
+        <br/>
+        <p class="text-left">If you already have an account, <br/> <br/> <a class='bg-success' style='border-radius: 4px; padding: 10px 20px; margin:10px 5px' href="/login">login</a> instead.</p>
+	</form>
+	
+</div>
+
+{% endblock %}

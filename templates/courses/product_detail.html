@@ -1,0 +1,106 @@
+{% extends '_base.html' %}
+
+{% block title %}Purchase{% endblock %}
+
+{% block content %}
+
+  <div style="margin-top:5px; margin-left: 15px; height: 680px;" >
+    <div  style="padding: 20px 20px;">
+      <h2 class="title is-size-2" style="text-align: center">Purchase</h2>
+      <hr><br>
+      <!-- notifications -->
+      <div class="notification-success-wrapper" style="display: none">
+        <div class="notification is-success"></div><br>
+      </div>
+      <div class="notification-danger-wrapper" style="display: none">
+        <div class="notification is-danger"></div><br>
+      </div>
+      <div class="card w-10 is-two-thirds" style="width:600px; text-align:center; border-radius:6px;">
+        <div class="card-body">
+          <br>
+          <h3 class="card-title is-size-4" style="font-weight: bold;" >Confirm Purchase</h3>
+          <div> 
+           
+            <hr/>
+            <h4 style="font-weight: bold"> Product </h4>
+            <p> {{ course.title }}
+           
+            <hr/> 
+            <h4 style="font-weight: bold"> Price </h4>
+            <p>$ {{ course.price }} </p>
+
+            
+            <hr/>
+            <h4 style="font-weight: bold"> Description </h4>
+            <p> {{ course.description }} </p>
+              <hr/>
+            <h4 style="font-weight: bold" > Complete Purchase</h4>
+            <br>
+            <button id="purchase-btn" class="button1 is-info" style="padding: 10px 35px; background-color:black; color: white; border-radius:6px">Pay ${{ course.price }} with Card</button>
+            <br><br>
+          </div>
+          
+         
+          
+        </div>
+      </div>
+      
+    </div>
+    <br>
+    
+  
+  </div>
+
+  
+{% endblock %}
+
+{% block script %}
+  <script>var generated_csrf_token = '{{ csrf_token }}';</script>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script>
+    $(() => {
+      var handler = StripeCheckout.configure({
+        key: '{{ key }}',
+        locale: 'auto',
+        token: function(token) {
+          $('.notification-success-wrapper').css('display', 'none');
+          $('.notification-danger-wrapper').css('display', 'none');
+          $.ajax({
+            url: '/courses/charge/',
+            method: 'POST',
+            data: JSON.stringify({
+              token: token.id,
+              amount: "{{ course.price }}" * 100,
+              description: "{{ course.title }}",
+              course_id: "{{ course.id }}",
+            }),
+            headers: {'X-CSRFToken': generated_csrf_token},
+          })
+          .done((res) => {
+            const message = 'Thanks for purchasing!'
+            $('div > .notification.is-success').html(message);
+            $('.notification-success-wrapper').css('display', 'block');
+          })
+          .fail((err) => {
+            const message = 'There was a problem processing your payment. Please use a different payment method or contact your payment method provider.<br><br>Please contact us if you continue to have problems.'
+            $('div > .notification.is-danger').html(message);
+            $('.notification-danger-wrapper').css('display', 'block');
+          });
+        }
+      });
+      document.getElementById('purchase-btn').addEventListener('click', function(e) {
+        // Open Checkout with further options:
+        handler.open({
+          name: "Purchase a course",
+          description: "{{ user.name }}",
+          amount: "{{ course.price }}" * 100
+        });
+        e.preventDefault();
+      });
+      // Close Checkout on page navigation:
+      window.addEventListener('popstate', function() {
+        handler.close();
+      });
+    });
+  </script>
+{% endblock %}

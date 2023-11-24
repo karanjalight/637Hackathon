@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+  <br />
+  <div style="margin-top: 15px; margin-left: 35px" > 
+    <h1 class="title is-size-1">Courses</h1>
+  <hr><br>
+  {% if course_list %}
+    {% for course in course_list %}
+      <h4 class="title is-size-4">{{ course.title }}</h4>
+      <p>{{ course.description }}</p>
+      <br>
+      <p ><a class='bg-dark  m-2 w-3' style='border-radius: 4px; padding: 20px 40px;' href="{% url 'course_detail' course.slug %}" class="button is-info">Purchase</a></p>
+      <br><br><br>
+    {% endfor %}
+  {% else %}
+    <p>No courses!</p>
+  {% endif %}
+  </div>
+
+{% endblock %}
