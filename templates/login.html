@@ -1,37 +1,80 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-  <div
-  style="margin-top: 15px; margin-left: 35px; height: 680px;" 
-  
-  >
-   <div>
-    <h3 class="title is-size-1">Login</h3>
-    <hr><br>
-    <form method="post">
+
+<div class="flex h-screen lg:flex-row flex-col">
+  <div class="bg-blue-400 w-1/2">
+    <div class="flex items-center justify-center">
+      <div class="lg:pt-40 text-white font-bold text-2xl ">
+        <img class="w-80" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTak5whWNd0cn_D-mL75N1-NlPmkycoS0HMPgrKcbaK-jhnuIyyNevOvAOtmZgiEc6zOmE&usqp=CAU" alt="">
+
+       <p class="mt-20">
+        Welcome to 637 Capital
+       </p>
+      </div>
+    </div>
+  </div>
+  <div class="w/1/2 flex pl-60 items-center justify-center">
+    <form class="p-4 pt-20 px-16 w-[600px] shadow-2xl rounded-2xl" method="post">
+      <h2 class="text-center text-2xl py-4"> Sign In </h2>
       {% csrf_token %}
-      <div class="field" style="margin-bottom: 8px;">
-          <label class="label">Email</label>
+        <div class="field " style="margin-bottom: 8px;">
+          <label class="label py-4 text-gray-600 text-xl  ">Email</label>
           <div class="control">
-            <input class="input" style="padding: 5px 10px" name="username" type="email" placeholder="e.g. alexsmith@gmail.com">
+            <input class="input border w-full py-8 h-14 mt-3" style="padding: 5px 10px" name="username" type="email" placeholder="e.g. alexsmith@gmail.com">
           </div>
         </div>
-        <div class="field" style="margin-bottom: 8px;">
+        <div class="field py-4 text-gray-600 text-xl " st yle="margin-bottom: 8px;">
           <label class="label">Password</label>
           <div class="control">
-            <input class="input"  style="padding: 5px 10px;" name="password" type="password" placeholder="Password">
+            <input class="input w-full border py-4 h-14 mt-3"  style="padding: 5px 10px;" name="password" type="password" placeholder="Password">
           </div>
         </div>
         <div class="field">
-        <p class="control">
-          <button type="submit" class="button is-success btn-primary" style="padding: 8px 15px; margin-top: 10px; border-radius: 6px;"> Login </button>
+        <p class="control flex items-center mb-4 justify-center">
+          <button type="submit" class="button is-success btn-primary bg-blue-600 py-3 rounded-2xl w-full text-white "> Login </button>
         </p>
-        <p class="text-left">Don't have an account? <br/> <br/> <a class='bg-success' style='border-radius: 4px; padding: 10px 20px; margin:10px 5px' href="/">Register</a> instead.</p>
+        <p class="text-left italic flex gap-6 mt-10 pb-20">Don't have an account? <br/> <br/> <a class='bg-success text-blue-600'  href="/users/register-seller/"> Click here to Register</a> .</p>
   
       </div>
     </form>
-   </div>
   </div>
+
+</div>
+ 
 {% endblock %}
+
+
+<!-- <div
+style="margin-top: 15px; margin-left: 35px; height: 680px;" 
+
+>
+ <div>
+  <h3 class="title is-size-1 ">Login</h3>
+  <hr><br>
+  <form method="post">
+    {% csrf_token %}
+    <div class="field" style="margin-bottom: 8px;">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" style="padding: 5px 10px" name="username" type="email" placeholder="e.g. alexsmith@gmail.com">
+        </div>
+      </div>
+      <div class="field" style="margin-bottom: 8px;">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input"  style="padding: 5px 10px;" name="password" type="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="field">
+      <p class="control">
+        <button type="submit" class="button is-success btn-primary" style="padding: 8px 15px; margin-top: 10px; border-radius: 6px;"> Login </button>
+      </p>
+      <p class="text-left">Don't have an account? <br/> <br/> <a class='bg-success' style='border-radius: 4px; padding: 10px 20px; margin:10px 5px' href="/">Register</a> instead.</p>
+
+    </div>
+  </form>
+ </div>
+</div> -->
