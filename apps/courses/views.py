@@ -125,5 +125,36 @@ def get_or_create_customer(email, name, token):
 
 def clientAquisitionView(request):
     
+    
 
     return render(request, 'clientAquisition.html')  
+
+
+def projectPlanningView(request):
+    
+    return render(request, 'projectplanning.html')
+
+
+def clientCommunicationView(request):
+    
+    return render(request, 'clientcommunication.html')
+
+
+def qualityAssuaranceView(request):
+    
+    return render(request, 'qualityassuarance.html')
+
+
+def billingView(request):
+    
+    return render(request, 'billing.html')
+
+
+def projectClosureView(request):
+    
+    return render(request, 'projectclosure.html')
+
+
+def confidentialityView(request):
+    
+    return render(request, 'confidentiality.html')
