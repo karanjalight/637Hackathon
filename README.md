@@ -1,4 +1,4 @@
-# Setting up Stripe Connect with Django
+<!-- # Setting up Stripe Connect with Django
 
 
 1. Fork/Clone
@@ -48,4 +48,4 @@ https://www.youtube.com/watch?v=LaoYcQsPyD8&ab_channel=CodeWithMuh - Mohammed Mu
 
 
 <!-- importing models -->
-from apps.users.models import Seller as Company
+from apps.users.models import Seller as Company -->
