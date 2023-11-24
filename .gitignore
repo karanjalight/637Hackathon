@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#git config
+.git/config
+
 # Django stuff:
 *.log
 # db.sqlite3
