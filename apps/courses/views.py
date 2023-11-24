@@ -123,11 +123,11 @@ def get_or_create_customer(email, name, token):
 
 
 
-def clientAquisitionView(request):
+def clientAcquisitionView(request):
     
     
 
-    return render(request, 'clientAquisition.html')  
+    return render(request, 'clientAcquisition.html')  
 
 
 def projectPlanningView(request):

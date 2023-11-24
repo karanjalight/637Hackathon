@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (CourseListView, CourseDetailView, CourseChargeView, CreateStripeCheckoutSessionView,
-                    clientAquisitionView, projectPlanningView, clientCommunicationView, qualityAssuaranceView,
+                    clientAcquisitionView, projectPlanningView, clientCommunicationView, qualityAssuaranceView,
                     billingView, projectClosureView, confidentialityView)
 
 from . import views
@@ -14,7 +14,7 @@ urlpatterns = [
   path("create-checkout-session/<int:pk>/",CreateStripeCheckoutSessionView.as_view(),
         name="create-checkout-session",
     ),
-  path("client-acquisition/<int:pk>", clientAquisitionView, name="client-acquisition" ),
+  path("client-acquisition/<int:pk>", clientAcquisitionView, name="client-acquisition" ),
   path("project-planning/<int:pk>", projectPlanningView, name="project-planning"),
   path("client-communication/<int:pk>", clientCommunicationView, name="client-communication"),
   path("quality-assuarance/<int:pk>", qualityAssuaranceView, name="quality-assuarance"),
