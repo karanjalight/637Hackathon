@@ -122,3 +122,8 @@ def get_or_create_customer(email, name, token):
     )
 
 
+
+def clientAquisitionView(request):
+    
+
+    return render(request, 'clientAquisition.html')  
